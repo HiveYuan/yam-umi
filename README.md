@@ -178,13 +178,18 @@ contributions welcome.
 
 ## Design updates
 
-### 2026-09-28 — L bracket v4
+### 2026-09-28 — L bracket v4 and handle v14
 
 - Updated the L bracket to mitigate plate bending when squeezing the glove hard.
 - Changed gripper fastening from M4 bolts and nuts to M4 screws with heat-set
   inserts to make assembly easier.
 - Updated the [STEP](hardware/STEP/L_bracket_v4.step) and
   [STL](hardware/STL/L_bracket_v4.stl) files, replacing v3.
+- Updated the handle to v14, removing the side hole for an M4 nut. The handle
+  attaches to the L plate with an M3 screw and heat-set insert; the remaining
+  M4 hole serves only to prevent the handle from rotating in place.
+  Updated the [STEP](hardware/STEP/handle_v14.step) and
+  [STL](hardware/STL/handle_v14.stl) files, replacing v13.
 
 ## Parts
 
@@ -199,7 +204,7 @@ watertight, so re-export from STEP if you want a different resolution.
 | `plate_v6` | 102 × 65 × 10.4 | Main plate; carries both linear rails, the camera arm, and the pinion axle |
 | `adapter_v10` | 50 × 25.9 × 10.6 | Carriage-to-jaw adapter; presents the YAM gripper tip interface |
 | `pinion_z18_deep_v0`–`v3` | ⌀20.0–19.7 × 10.6 | Module 1, z=18 spur pinion coupling the two jaw racks for symmetric motion, as in the YAM gripper. Four fit variants — see [Printing](#printing) |
-| `handle_v13` | 32 × 17 × 55 | Operator handle |
+| `handle_v14` | 32 × 17 × 55 | Operator handle |
 | `L_bracket_v4` | — | Camera arm bracket |
 | `YAM_linear_gripper_fisheye_camera_mount` | — | Fisheye camera mount, matching the YAM wrist camera pose |
 

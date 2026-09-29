@@ -139,8 +139,12 @@ not just by trusting the mount geometry.
 
 ## 6. Handle and straps
 
-Attach `handle_v13`, then thread **one hook-and-loop strap per finger — two per
-gripper**, one for the thumb and one for the index/middle finger.
+Attach `handle_v14` to the L plate with an M3 screw and heat-set insert. The
+remaining M4 hole serves only to prevent rotation; v14 removes the side hole for
+an M4 nut because the nut is no longer needed to secure the handle.
+
+Then thread **one hook-and-loop strap per finger — two per gripper**, one for the
+thumb and one for the index/middle finger.
 
 Each finger position has two strap holes, but a single strap through one pair was
 enough to retain the finger in the reference build. The second hole is there if
