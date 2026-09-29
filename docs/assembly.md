@@ -8,12 +8,13 @@
 
 - Print everything in [`hardware/STL/`](../hardware/STL/). See
   [Printing](../README.md#printing).
-- **Install the M3 heat-set inserts first**, while the parts are still bare and
+- **Install the M3 and M4 heat-set inserts first**, while the parts are still bare and
   reachable with a soldering iron. Doing this after assembly is much harder, and a
   misaligned insert usually means reprinting the part.
 
-  Threads are brass **M3 × 5 mm × ⌀4 mm** inserts melted in with a soldering iron
-  insert tip — not tapped plastic, not captive nuts. Insert dimensions vary
+  The M3 threads use brass **M3 × 5 mm × ⌀4 mm** heat-set inserts.
+  L bracket v4 uses **M4 heat-set inserts** for gripper fastening instead of
+  nuts. Install inserts with a soldering iron insert tip. Insert dimensions vary
   between sellers at the same thread size, so check yours against the seat
   diameter in the STEP file before printing a full set.
 - Print the marker sheets at 100% scale. See
@@ -73,10 +74,9 @@ feel rather than by trusting this number.
 Bolt `adapter_v10` to each carriage. Install the YAM "Linear 4310" gripper tips
 into the adapters.
 
-Screws are not called out by size anywhere in this build. Work from an M3/M4
-assortment kit and pick the shortest screw that fully engages its insert — the
-printed parts are drawn for M3 × 5 mm inserts, so an over-long screw bottoms out
-against the insert rather than clamping the joint.
+Screw lengths are not yet specified for each joint. Work from an M3/M4
+assortment kit and pick the shortest screw that fully engages its insert without
+bottoming out; match the screw thread to the insert at each joint.
 
 <!-- TODO: if a size chart would help, record what you actually used per joint. -->
 
@@ -117,7 +117,7 @@ where grasp detail matters most.
 
 ## 5. Camera mount
 
-Attach `L_bracket_v3` and `YAM_linear_gripper_fisheye_camera_mount` to the plate,
+Attach `L_bracket_v4` and `YAM_linear_gripper_fisheye_camera_mount` to the plate,
 then mount the Arducam module.
 
 **Set the focus, then leave it alone.** The wrist fisheye focuses mechanically —

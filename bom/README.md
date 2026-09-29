@@ -73,9 +73,10 @@ from nothing can see the real outlay.
 | 3D printer | Printing the parts; PETG on a Bambu Lab X2D in the reference build | — |
 | PETG or PLA filament | ~65 g per gripper (90.6 cm³ solid volume) | ~$1.30 of a $19.99 / kg spool |
 | Soldering iron with heat-set insert tip | Installing the threaded inserts; many insert kits bundle one | — |
-| [M3 brass heat-set inserts](https://www.amazon.com/Threaded-Inserts-Assortment-Printing-Components/dp/B0DNHLGM8D), M3 × 5 mm × ⌀4 mm | All threads in the printed parts | $12.99 / 100 pc |
+| [M3 brass heat-set inserts](https://www.amazon.com/Threaded-Inserts-Assortment-Printing-Components/dp/B0DNHLGM8D), M3 × 5 mm × ⌀4 mm | M3 threads in the printed parts | $12.99 / 100 pc |
+| M4 brass heat-set inserts (match the seats in the v4 STEP file) | Gripper fastening with L bracket v4; replaces nuts | — |
 | [M3 button-head screw assortment](https://www.amazon.com/dp/B0FQJQNHF5) (840 pc, 8 lengths from 6–30 mm, hex wrench included) | General fastening, plus the pinion shaft screw | see listing |
-| [M4 bolt and nut assortment](https://www.amazon.com/Socket-Screw-Assortment-Stainless-Thread/dp/B01F5JI6N8) | General fastening | $16.99 / kit |
+| [M4 bolt and nut assortment](https://www.amazon.com/Socket-Screw-Assortment-Stainless-Thread/dp/B01F5JI6N8) | M4 screws for gripper fastening; v4 uses heat-set inserts instead of nuts | $16.99 / kit |
 | [Scotch double-sided tape](https://www.amazon.com/dp/B0035LXTYU), 1/2 in × 250 in (3-pack) | Mounting the printed ArUco markers | see listing |
 | Matte white paper or label stock | Printing the marker sheets | ~$0.10 |
 | Calipers | Verifying marker sheets printed at 100% scale | — |
@@ -92,8 +93,9 @@ was used here. No affiliation.
 Two of the supplies are more particular than they look:
 
 - **Heat-set inserts.** Insert dimensions vary between sellers at the same thread
-  size. These parts are drawn for **M3 × 5 mm long × 4 mm OD** — check the seat
-  diameter in the STEP files against whatever you buy before printing a full set.
+  size. The M3 seats are drawn for **M3 × 5 mm long × 4 mm OD**. L bracket v4
+  also needs M4 inserts for gripper fastening; check their length and outside
+  diameter against the seats in the STEP file before buying or printing.
 - **Double-sided tape**, specified over glue or edge tape because full-surface
   adhesion keeps the markers flat. A marker fixed only at its edges will curl, and
   a curled ArUco marker degrades pose estimates before it looks visibly wrong.
