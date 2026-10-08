@@ -4,7 +4,7 @@ YAM-UMI is a hand-worn, two-finger gripper. Your fingers open and close the hand
 
 The assembly sequence is: **Prepare the parts → Base plate and rails → Racks and pinion → Gripper fingers and handles → Straps → Wrist camera → Finger markers → Optional marker ball → Final checks.** After installing each set of moving parts, check that opening and closing remain smooth before continuing.
 
-The photo below shows the gripper with its wrist camera and optional marker ball. The marker ball lets a fixed external camera track the gripper's position and orientation; skip the marker-ball assembly if you use only the wrist camera for pose estimation.
+The photo below shows the gripper with its wrist camera and optional marker ball. The marker ball lets a fixed external camera track the gripper's position and orientation. Install it only if you choose external-camera tracking; Section 7 describes this option and the alternatives.
 
 ![Gripper with wrist camera and optional marker ball](../media/assembly-with-tracker.jpg)
 
@@ -18,7 +18,7 @@ The photo below shows the gripper with its wrist camera and optional marker ball
 | Rack adapter | Rectangular block with teeth along one edge, connecting the carriage to the gripper-finger assembly | `adapter_v10` | 2 |
 | Central pinion | Meshes with both racks to couple their motion | `pinion_z18_deep_v0` through `v3`; install one variant | 1 |
 | L bracket | Connects the gripper finger, handle, and rack adapter | `L_bracket_v4` | 2 |
-| Finger handle | Curved finger cradle with strap slots | `handle_v14` | 2 |
+| Finger handle | Curved finger cradle with a strap opening | `handle_v14` | 2 |
 | Gripper finger | Contacts the object directly, with a rubber gripping surface on the inside | Stock YAM "Linear 4310" gripper fingers | 2 |
 | Rails and carriages | Constrain the gripper fingers to linear motion | MGN9 100 mm rails and MGN9C carriages | 2 each |
 | Camera mount and cover | Secure the wrist fisheye camera | `YAM_linear_gripper_fisheye_camera_mount_main` and `_cover` | 1 each |
@@ -31,11 +31,13 @@ Some photos show thin rods extending to either side of the gripper, ending in sq
 
 ### Tools and Supplies
 
-Prepare hex tools that fit the screws, a soldering iron with a heat-set insert tip, calipers, small scissors, M3/M4 screws, heat-set inserts, double-sided tape, and matte paper for the markers. PETG can be used for the printed parts; remove supports and burrs, paying particular attention to the tooth gaps, mounting holes, and mating surfaces.
+Prepare hex tools that fit the screws, a soldering iron with a heat-set insert tip, calipers, small scissors, M3/M4 screws, heat-set inserts, thin double-sided tape, and matte paper or label stock for the markers. PETG can be used for the printed parts; remove supports and burrs, paying particular attention to the tooth gaps, mounting holes, and mating surfaces.
 
 `M3 × 12 mm` means a screw with a nominal thread diameter of 3 mm and a length of 12 mm; the non-countersunk screws used in this guide are measured from beneath the head to the tip. **M3 and M4 are not interchangeable.** Start each screw by hand for a few turns to check that the threads engage smoothly before using a tool.
 
-Where a screw length is not specified, choose the shortest screw of the correct thread size that fully engages the insert and brings the two parts together. If a screw stops turning while a gap remains between the parts, its tip may have reached the bottom of the hole; do not force it. Use a shorter screw and check the hole alignment. Do not choose screw lengths solely from the amount of exposed thread in a photo.
+**All M3 screws in this assembly are button-head screws with a low-profile dome.** Taller socket-cap or pan heads can collide with neighbouring parts; do not substitute head styles even when the thread and length match.
+
+Where a screw length is not specified, choose a screw of the correct thread size that fully engages its insert or nut and brings the two parts together. For the M4 gripper-finger screws, also satisfy the handle engagement and rack clearance requirements in Section 3. If a screw stops turning while a gap remains between the parts, its tip may have reached the bottom of the hole; do not force it. Use a shorter screw and check the hole alignment. Do not choose screw lengths solely from the amount of exposed thread in a photo.
 
 ### Install Heat-Set Inserts First
 
@@ -69,7 +71,7 @@ The photo below shows the rail-mounting face of the base plate. Five inserts are
 
 ![Rail-mounting face of the base plate](../media/assembly/base-plate-rail-side.jpg)
 
-The opposite face has four visible inserts, oriented as shown below.
+The opposite face has four visible M3 inserts. In the orientation shown below, the two on the right secure the camera mount. The two in the center secure the optional marker-ball support assembly, which carries the [`wrist_stalk_arc_adapter` rod mount](../pos-tracking/wrist_dodecahedron_marker/wrist_stalk_arc_adapter.stl); see Section 7 for the bracket connections.
 
 ![Back of the base plate](../media/assembly/base-plate-back.jpg)
 
@@ -143,13 +145,14 @@ First combine each gripper finger with an L bracket and handle to form a subasse
 | M3 heat-set inserts for the handles | 2, one per handle |
 | M4 heat-set inserts for the L brackets | 4, two per bracket |
 | M3 × 12 mm screws | 6, one per side to secure the handle and two per side to attach the rack adapter |
-| M4 gripper-finger mounting screws | 4, two per side; select 16 mm or 20 mm according to the thickness of the parts traversed at each hole |
+| M4 gripper-finger mounting screws | 4: one longer screw and one shorter screw per side, sized for the engagement and clearance described below |
+| Washers or M4 nuts to use as spacers under the shorter screw heads | As needed to prevent the screws from protruding below the L brackets |
 
 ### Attach the Handles to the L Brackets
 
-Each handle has a curved finger cradle, strap slots, and mounting holes in its end face. First install an M3 insert in its seat, leaving the other hole clear for the anti-rotation fit.
+Each handle has a curved finger cradle, a strap opening, and mounting holes in its end face. First install an M3 insert in its seat, leaving the other hole clear for the anti-rotation fit.
 
-![Finger cradle, strap slots, and end-face holes in the handle](../media/assembly/finger-handle.jpg)
+![Finger cradle and end-face mounting holes in the handle](../media/assembly/finger-handle.jpg)
 
 1. Install M4 inserts in the two seats on the short leg of the L bracket.
 2. Place the end face of the handle against the back of the bracket's short leg. Align the central M3 mounting hole and the anti-rotation hole.
@@ -162,9 +165,13 @@ Each handle has a curved finger cradle, strap slots, and mounting holes in its e
 ### Secure the Gripper Fingers
 
 1. Place the gripper finger's mounting face against the short leg of the L bracket, aligning the two mounting holes with the M4 inserts.
-2. Insert two M4 screws from the gripper-finger side. Choose their lengths according to the thickness of the parts traversed at each hole, so they fully engage the inserts without bottoming out.
+2. Insert two M4 screws from the gripper-finger side, using different lengths at the two holes:
+   - The hole over the handle takes the **longer screw**. It passes through the finger and L bracket and extends partway into the handle to prevent rotation. Choose a length that engages the handle without bottoming out.
+   - The other hole takes the **shorter screw**. It must engage the L bracket's insert without protruding below the bracket, where it would collide with the opposite rack. If the shortest available screw still protrudes, place a washer or an M4 nut under its head to take up the excess length while preserving thread engagement.
 3. Start both screws in their threads, then tighten them gradually, alternating between them, until the gripper finger sits flush against the bracket. Do not use screw-tightening force to pull misaligned holes into position.
 4. Assemble the other side in the same way, with the rubber gripping surfaces facing each other.
+
+The extra plate and protruding cylinder between the screw heads and the gripper finger in the photo belong to the [forward-camera experiment](https://github.com/YosubShin/forward-cam-umi). Omit those parts for this assembly and select screw lengths for the actual finger, bracket, and handle stack.
 
 ![Connection orientation and the two M4 mounting screws between the gripper finger and L bracket](../media/assembly/jaw-fasteners.jpg)
 
@@ -180,17 +187,13 @@ The photos below show the open and closed positions. The marker rods extending o
 
 ![Gripper fingers installed and closed](../media/assembly/jaws-closed.jpg)
 
-If a rack adapter hits a rubber cap at the end of a rail, trim only the interfering upper portion of the cap, preserving the part that prevents the carriage from sliding off. Do not remove the entire end stop.
-
 ## 4. Straps and Fit
 
 Use one hook-and-loop strap per handle: one side for the thumb, and the other for the index finger or the index and middle fingers together.
 
-1. Choose a pair of strap slots on each handle that suits your finger position. Thread a strap through the slots to form a loop over the curved finger cradle.
+1. Thread one strap through the strap opening on each handle to form a loop over the curved finger cradle.
 2. Place your finger in the cradle, adjust the strap length, and fasten it. The strap should let you pull the handle open without constricting your finger.
 3. Slowly pinch and open a few times. Check that your fingers can move the gripper naturally, both sides move smoothly, and neither your fingers nor the straps enter the moving areas of the pinion, racks, or carriages.
-
-The spare slots on each handle allow you to adjust strap position. Start with one strap on each side, then adjust for your hand shape.
 
 ![Both handles with their straps fitted](../media/assembly/finger-straps.jpg)
 
@@ -227,22 +230,36 @@ Roughly adjust the lens until the fingers and working area are clear; perform fi
 
 ## 6. Gripper Aperture Markers
 
-The wrist camera uses the black-and-white markers on the gripper fingers to estimate the distance between them. Apply one marker to each finger where the camera can see it in both the open and closed positions.
+The wrist camera uses the black-and-white markers on the gripper fingers to estimate the distance between them. These markers are needed for wrist-camera policies as well as for setups with marker-ball tracking. Apply one marker to the top of each finger where the wrist camera can see both throughout opening and closing.
 
-### Print and Cut the Markers
+### Measure Before Cutting Each Marker Group
 
-1. Open the [glove marker print file](../pos-tracking/glove_markers_v4.pdf) and select the **tips WRIST** group in the left column: AprilTag 16h5, IDs 2 (A) and 3 (B).
-2. Print at **100% / Actual size**, with "Fit to page" and all automatic scaling disabled. Check the printed 100 mm scale bar with calipers.
-3. Check that the black square of each finger marker measures 6 mm per side; the cut size including the white border is 8 mm. Cut around the outer edge, preserving the white border around the marker.
+Print the [glove marker sheet](../pos-tracking/glove_markers_v4.pdf) at **100% / Actual size** on **matte paper or label stock**, with "Fit to page" and all automatic scaling disabled. Do not use glossy paper. The finger markers are in the **tips WRIST** group in the left column: AprilTag 16h5, IDs 2 (A) and 3 (B), with nominal 6 mm black squares and 8 mm tiles including the white border.
 
-### Position and Apply the Markers
+Printer output can vary even between prints of the same sheet; variation of ±5% has been observed on the same printer. The solver uses the printed marker size to recover distance, so a 3% size error produces a 3% range error. Nominal dimensions and the print-dialog setting are not a substitute for measurement.
 
-1. Clean the flat surface of each gripper finger that faces the wrist camera. Choose an area approximately 25 mm from the base of the finger where the entire marker can lie flat. The marker must not cross an edge or cover the rubber gripping surface that contacts objects.
-2. Cover the entire back of the marker with double-sided tape, then press it flat into place. Do not attach only the corners, as a curled surface can interfere with detection.
-3. Apply one ID to each gripper finger, preserving the two distinct numbers rather than using the same ID twice. Record which ID is on which finger for the data-collection configuration.
-4. In the camera preview, slowly move the fingers from closed to open. Both markers should remain fully within the frame, with clear edges and black-and-white cells, unobstructed by the gripper bodies or cables.
+Before cutting any markers:
 
-If a marker is difficult to see near the edge of the fisheye image, adjust its position within the finger's flat area, favoring a location away from the heavily distorted image edge; do not fold the paper around the side of the finger.
+1. Check the printed 100 mm scale bar with calipers.
+2. For **each group you will use**, measure the **black square**, not the white outline. Take six measurements across different markers in that group, alternating width and height, and average them. Measure the finger, ball, and optional tail/base groups separately.
+3. Record the average for each group with the physical unit's calibration. For the forward-camera pipeline, enter these values in `calib/marker_map_glove_<unit>.json` in the companion repository and use the measured ball size in the ball calibration. See [forward-cam-umi measurements](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/README.md#1-measurements--one-caliper-reading-per-printed-group).
+
+### Prepare the Adhesive and Cut the Markers
+
+These rules apply to both the finger markers and the optional ball markers:
+
+1. Cover the entire back of the **uncut** marker region with thin double-sided tape.
+2. Cut through the paper and tape together along the outer tile boundary, preserving the white border. Every edge must be bonded with no loose paper margin.
+3. Leave the printed face uncovered. **Do not use glue or put tape over the marker face.** Glue can curl the edges as it dries; glossy surfaces, reflections, and refraction interfere with locating the corners used by the solver.
+
+### Position and Apply the Finger Markers
+
+1. Clean the flat surface on top of each gripper finger, facing the wrist camera. Position the marker **30 mm from the root of the finger**, as in the reference build, with the entire tile lying flat. Do not cross an edge or cover the rubber gripping surface that contacts objects.
+2. Press each prepared marker flat into place, with its entire back bonded to the finger.
+3. Apply one distinct ID per finger and record which ID is on which finger for the unit's calibration.
+4. In the wrist-camera preview, slowly move the fingers from closed to open. Both markers must remain fully visible, with clear edges and black-and-white cells, unobstructed by the gripper bodies or cables. Check detection with [`tag_contrast.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/tag_contrast.py).
+
+If a marker is difficult to see near the edge of the fisheye image, adjust its position within the finger's flat area **before calibration**, favoring a location away from the heavily distorted image edge; do not fold the paper around the side of the finger. Moving or replacing a marker after calibration requires recalibrating the affected geometry and aperture measurements.
 
 ### Set the Final Focus
 
@@ -252,7 +269,12 @@ At the working distance of the gripper fingers and the object, slowly rotate the
 
 ## 7. Marker-Ball Tracking Assembly (Optional)
 
-A fixed external camera uses the patterns on the marker ball to estimate the gripper's position and orientation. For this tracking method, install the extension bracket, rod mount, rod, and marker ball; skip this section if you use only the wrist camera for pose estimation.
+A fixed external camera reads the printed patterns on the marker ball to estimate the gripper's position and orientation. The software is in the companion [forward-cam-umi repository](https://github.com/YosubShin/forward-cam-umi). If this is your pose source, install the extension bracket, rod mount, rod, and marker ball described below.
+
+Skip the marker-ball assembly if you use another pose source:
+
+- **Wrist camera with visual-inertial SLAM (classic UMI):** use the fisheye camera on the gripper with the SLAM pipeline; no marker ball is needed.
+- **VR hand controller:** the third-party [tinyumi Quest-controller mount](https://github.com/vovw/tinyumi/blob/main/pos-tracking/quest_mount/handumi_v1/README.md) is adapted from YAM-UMI. It requires that fork's revised base plate and mounting hardware; it does not bolt onto an unmodified `plate_v6`. This option has not been tested by the YAM-UMI authors. Follow the fork's assembly instructions for this variant.
 
 ### Required Parts
 
@@ -264,12 +286,14 @@ Print files are in the [marker-ball assembly directory](../pos-tracking/wrist_do
 | Rod mount | `wrist_stalk_arc_adapter` | 1 |
 | 80 mm rod | `stalk_rod_80mm` | 1 |
 | Dodecahedral marker ball | `dodeca_marker_ball_v2` | 1 |
-| M3 screws and inserts compatible with the connection holes | As required for the holes | 1 set |
+| M3 × 25 mm button-head screws for the extension-bracket-to-rod-mount connection | — | 2 |
+| M3 nuts for the same connection | — | 2 |
+| M3 button-head screws and inserts for the remaining connections | Sized for the respective holes | As required |
 
 ### Install the Bracket, Rod, and Ball
 
 1. Secure the arc extension bracket to the back of the base plate, with its slender support arm along the back of the plate and its upper curved section providing a seat for the rod mount. See the photo in Section 5 for its position relative to the camera mount.
-2. Seat the curved bottom of the rod mount against the extension bracket, with its square socket facing upward. Align the mounting holes and install the screws. Keep the mating surfaces flush; do not overtighten and deform the printed parts.
+2. Seat the curved bottom of the rod mount against the extension bracket, with its square socket facing upward. Align the two mounting holes and secure the connection with **two M3 × 25 mm button-head screws and two M3 nuts**. Keep the mating surfaces flush; do not overtighten and deform the printed parts.
 
 ![Rod mount attached to the arc extension bracket, with its square socket facing upward](../media/assembly/tracker-rod-mount.jpg)
 
@@ -281,14 +305,24 @@ Print files are in the [marker-ball assembly directory](../pos-tracking/wrist_do
 
 ### Apply the Ball Markers
 
-1. From the **dodecahedron ball** group in the left column of the same [glove marker print file](../pos-tracking/glove_markers_v4.pdf), select the eleven ArUco markers with IDs 25–35.
-2. Again, print at 100% / Actual size. Each black marker is 15 mm per side, and the square tile including the white border is 19.5 mm per side.
-3. Apply the eleven markers to eleven faces of the ball, one per face with no duplicate IDs. Cover each marker's entire back with double-sided tape, keep it flat, and do not bridge edges between faces.
-4. No fixed ID order is required; preserve the ball's actual layout for subsequent calibration. Do not swap stickers after calibration.
+1. From the **dodecahedron ball** group in the left column of the [glove marker sheet](../pos-tracking/glove_markers_v4.pdf), select the eleven ArUco markers with IDs 25–35 (`DICT_4X4_100`). Their nominal black-square size is 15 mm, and the tile including the white border is 19.5 mm per side.
+2. Follow [Measure Before Cutting Each Marker Group](#measure-before-cutting-each-marker-group) and [Prepare the Adhesive and Cut the Markers](#prepare-the-adhesive-and-cut-the-markers). Record the ball group's measured black-square size separately from the finger group and use it for ball calibration.
+3. Apply one marker to each of eleven faces, with no duplicate IDs. Keep every marker flat on its own face with its entire back bonded; never bridge an edge between faces.
+4. No fixed ID-to-face order is required: calibration recovers the layout. **Do not move, re-stick, or swap a marker after calibration.** Any such change requires recalibrating the ball, and each ball's calibration stays with that physical unit.
 
-The ball patterns use the `DICT_4X4_100` dictionary. The tails and base groups in the right column of the sheet belong to a different extension setup and are not used in this assembly.
+The tails and base groups in the right column belong to the forward-camera extension, which uses additional markers as an occlusion backup for the ball and for external-camera aperture measurement. They are not required for the basic wrist-camera-and-ball assembly described here; follow the companion repository if you add those extensions.
 
-Aim the external camera at the full working area so that the marker ball stays in frame when the gripper is raised or rotated, and avoid prolonged occlusion by your hand or the camera cable. Before tracking, calibrate the camera and the relative positions of the ball's markers; each ball's calibration must be stored with that specific physical unit.
+### Mount and Calibrate the Forward Camera
+
+Marker-ball tracking needs a fixed camera above the workspace; the reference setup uses an **Arducam B0587 4K**. Follow the [forward-cam-umi camera, recording, and calibration procedure, steps 2–6](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/README.md) for commands and configuration. The assembly-to-calibration sequence is:
+
+1. **Mount the camera rigidly.** It must not move between calibration and recording. Frame the full working area, leaving headroom for the marker ball when the gripper is raised or rotated, and avoid prolonged occlusion by your hand or the cable.
+2. **Set focus at working distance.** Use the live meter in [`focus_tune.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/focus_tune.py) on a marker, then mark the lens barrel. Refocusing later requires recalibrating that camera.
+3. **Calibrate camera intrinsics.** Use a ChArUco board with [`calibrate_uvc.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/calibrate_uvc.py), supplying measured board-square and marker dimensions. Calibrate each camera used for metric pose or aperture estimation, including the wrist camera, and keep its calibration with the unit.
+4. **Solve the ball geometry.** Record a slow rotation take that shows every ball face, run detection, and use [`bundle_dodeca.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/bundle_dodeca.py) followed by [`bundle_dodeca_ideal.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/bundle_dodeca_ideal.py), using the ball group's measured size. Store the resulting geometry with this physical ball.
+5. **Calibrate the gripper markers and aperture.** If using the forward-camera extension's back/base markers, solve their geometry relative to the ball with [`calibrate_gripper_bundle.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/calibrate_gripper_bundle.py). Follow the companion procedure's measured-width holds for aperture calibration; both wrist-camera tip markers must remain detectable throughout those holds. Keep the unit's marker map, geometry, and aperture calibration together.
+
+On a real YAM arm, this tracking stack measured **7.7 mm median position error and 1.7° median rotation error** against the arm's forward kinematics. See [dynamic tracking accuracy](../pos-tracking/dynamic-accuracy.md).
 
 ## 8. Final Checks
 
@@ -298,25 +332,27 @@ First check the gripper without an object, then grasp something light and non-fr
 |---|---|
 | Fixed connections | Gently wiggle the gripper fingers, handles, and brackets; no connection is loose, and no insert turns with its screw |
 | Coupled opening and closing | Slowly open and close the gripper several times; both sides move together, the pinion stays engaged, and there is no binding or tooth skipping |
-| Travel and end stops | Adapters do not hit fixed parts during opening or closing, and carriages cannot leave the rails |
+| Travel and end stops | Adapters do not hit fixed parts, shorter M4 screws do not protrude into the opposite rack, and carriages cannot leave the rails |
 | Grasping contact | Both rubber gripping surfaces contact a light object, with no tilting of the gripper fingers |
 | Fit | Straps do not constrict your fingers; you can open and close the gripper naturally without touching the transmission |
 | Wrist camera view | The camera is secure, video is continuous, and the fingers and working area are clearly visible |
-| Finger markers | Both markers remain fully visible and sharp throughout opening and closing, with no curled paper edges |
+| Finger markers | Both distinct IDs decode throughout opening and closing; markers are flat, matte, fully bonded, and uncovered |
+| Printed dimensions | Each used marker group has six black-square measurements averaged and recorded for this unit; calibration uses those measured sizes |
 | Cables | Rotating your wrist or opening the gripper does not pull on connectors or draw cables between moving parts |
 | Optional marker ball | The ball and rod mount are secure, stickers are flat with distinct IDs, and the ball remains within the external camera's view during operation |
 
-After the hardware checks, keep the lens focal length, marker positions, and bracket connections unchanged, then follow your data-collection software's calibration and trial-recording procedure. Completing the mechanical assembly does not by itself provide usable pose or aperture data.
+After the hardware checks, complete calibration and a trial recording with your chosen tracking software. For external-camera tracking, use the companion procedure linked in Section 7 and keep the calibration files with the unit. Keep camera focus, camera mounting, marker positions, and bracket connections unchanged after calibration; if any of these change, repeat the affected calibration before recording data. Completing the mechanical assembly does not by itself provide usable pose or aperture data.
 
 ## 9. Troubleshooting
 
 | Symptom | Checks and corrective action |
 |---|---|
-| A carriage slides smoothly on its own but becomes stiff after the adapter is installed | Check whether the adapter's underside sits flat, the screws are too long, or the adapter hits a rail end cap |
+| A carriage slides smoothly on its own but becomes stiff after the adapter is installed | Check whether the adapter's underside sits flat, mounting holes align, or the screws bottom out before securing the adapter |
 | Resistance increases noticeably after the pinion is installed | Check whether the axle screw presses against the pinion or the pinion is tilted; try a pinion size that meshes more smoothly |
 | The two sides do not move together, or teeth skip | Check that the toothed edges face each other, the pinion meshes with both racks, and the adapters and pinion are secure |
+| Motion binds after the gripper fingers are attached | Check that the shorter M4 screws do not protrude below the L brackets; use shorter screws or spacers under their heads while preserving thread engagement |
 | A screw will not turn further but a gap remains between the parts | Check for a bottomed-out screw, misaligned holes, or remaining print supports; do not force the screw |
 | An insert turns with its screw | Stop tightening and repair the insert mounting; replace the printed part if its insert seat is damaged |
-| A marker is obscured when the gripper closes | Use the camera preview to identify the obstruction, reposition the marker within the flat area, and recheck the full travel |
-| Marker edges are blurred or reflective | Check focus, paper flatness, and lighting; use matte paper and avoid direct light reflections into the lens |
-| The marker ball leaves the frame or is hidden by your hand | Adjust the external camera framing to leave room for lifting the gripper, and check the bracket's position relative to your hand |
+| A marker is obscured when the gripper closes | Use the camera preview to identify the obstruction, reposition the marker within the flat area, and recheck detection over the full travel; repeat the affected geometry and aperture calibration if the marker moved |
+| Marker edges are blurred or reflective | Check focus, paper flatness, and lighting; use matte paper with no tape over the face. Recalibrate the camera after refocusing, and the affected marker geometry after replacing a marker |
+| The marker ball leaves the frame or is hidden by your hand | Adjust framing to leave room for lifting the gripper, and check the bracket's position relative to your hand; repeat the affected extrinsic calibration if the camera or bracket moves |
