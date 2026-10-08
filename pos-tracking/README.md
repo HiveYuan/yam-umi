@@ -229,4 +229,4 @@ as the tip's flat area allows. The camera looks down at an angle, so distance fr
 it moves the marker toward the centre of the frame and away from the distorted
 edge; the limit is mechanical, not optical, since the tip narrows and eventually
 offers no flat patch wide enough to seat a marker. See
-[assembly](../docs/assembly.md#4-aperture-markers).
+[assembly](../docs/assembly.md#6-gripper-aperture-markers).
