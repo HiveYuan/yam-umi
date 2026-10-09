@@ -64,7 +64,7 @@ alternating width and height. Average and record each group separately;
 the white border is the cutting boundary, not the measurement boundary.
 Enter the measured sizes in the unit's marker map and use the measured
 ball size in its calibration. See the assembly guide's
-[measurement procedure](../docs/assembly.md#measure-before-cutting-each-marker-group).
+[measurement procedure](../docs/assembly.md#measure-before-you-cut--every-marker-group).
 
 Apply thin double-sided tape across the **entire back of the uncut marker
 region**, then cut through paper and tape together, preserving the white
@@ -91,7 +91,7 @@ for camera setup, intrinsics, a rotation take, detection, and ball geometry
 solving. Use the measured marker size and keep the solved geometry with
 that physical ball. Moving, re-sticking, or swapping a marker requires
 recalibrating it. The assembly guide summarizes the
-[camera and calibration sequence](../docs/assembly.md#mount-and-calibrate-the-forward-camera).
+[camera and calibration sequence](../docs/assembly.md#the-forward-camera-mount-focus-calibrate-solve-the-ball).
 
 ### Measured performance
 
@@ -234,4 +234,4 @@ and both markers visible throughout the full opening. Check detection
 with [tag_contrast.py](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/tag_contrast.py).
 If repositioning a marker after calibration, repeat the affected geometry
 and aperture calibration. See the
-[assembly instructions](../docs/assembly.md#6-gripper-aperture-markers).
+[assembly instructions](../docs/assembly.md#apply-the-gripper-tip-markers).

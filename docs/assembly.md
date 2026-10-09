@@ -2,9 +2,9 @@
 
 YAM-UMI is a hand-worn, two-finger gripper. Your fingers open and close the handles, while two racks remain coupled through a central pinion; the wrist camera moves with the gripper and records the grasping area.
 
-The assembly sequence is: **Prepare the parts → Base plate and rails → Racks and pinion → Gripper fingers and handles → Straps → Wrist camera → Finger markers → Optional marker ball → Final checks.** After installing each set of moving parts, check that opening and closing remain smooth before continuing.
+The assembly sequence is: **Prepare the parts → Base plate and rails → Racks and pinion → Gripper fingers and handles → Straps → Wrist camera → Optional marker-ball assembly → Markers and camera calibration → Final checks.** After installing each set of moving parts, check that opening and closing remain smooth before continuing.
 
-The photo below shows the gripper with its wrist camera and optional marker ball. The marker ball lets a fixed external camera track the gripper's position and orientation. Install it only if you choose external-camera tracking; Section 7 describes this option and the alternatives.
+The photo below shows the gripper with its wrist camera and optional marker ball. The marker ball lets a fixed external camera track the gripper's position and orientation. Install it only if you choose external-camera tracking; Section 6 describes this option and the alternatives.
 
 ![Gripper with wrist camera and optional marker ball](../media/assembly-with-tracker.jpg)
 
@@ -25,7 +25,7 @@ The photo below shows the gripper with its wrist camera and optional marker ball
 | Wrist camera | Records the grasping area and the markers on the gripper fingers | Arducam fisheye USB camera compatible with the mount | 1 |
 | Hook-and-loop straps | Secure your fingers to the handles | Straps approximately 6 inches long | 2 |
 
-Print files are in the [gripper STL directory](../hardware/STL/). The four pinion sizes are for test fitting; install only the one that turns most smoothly. Use stock YAM gripper fingers, which do not need to be printed. Parts for the optional marker-ball assembly are listed in Section 7.
+Print files are in the [gripper STL directory](../hardware/STL/). The four pinion sizes are for test fitting; install only the one that turns most smoothly. Use stock YAM gripper fingers, which do not need to be printed. Parts for the optional marker-ball assembly are listed in Section 6.
 
 Some photos show thin rods extending to either side of the gripper, ending in square platforms. These are marker extensions for the external-camera setup and are not required for the basic YAM-UMI assembly; the photos illustrate the shared gripper structure.
 
@@ -71,7 +71,7 @@ The photo below shows the rail-mounting face of the base plate. Five inserts are
 
 ![Rail-mounting face of the base plate](../media/assembly/base-plate-rail-side.jpg)
 
-The opposite face has four visible M3 inserts. In the orientation shown below, the two on the right secure the camera mount. The two in the center secure the optional marker-ball support assembly, which carries the [`wrist_stalk_arc_adapter` rod mount](../pos-tracking/wrist_dodecahedron_marker/wrist_stalk_arc_adapter.stl); see Section 7 for the bracket connections.
+The opposite face has four visible M3 inserts. In the orientation shown below, the two on the right secure the camera mount. The two in the center secure the optional marker-ball support assembly, which carries the [`wrist_stalk_arc_adapter` rod mount](../pos-tracking/wrist_dodecahedron_marker/wrist_stalk_arc_adapter.stl); see Section 6 for the bracket connections.
 
 ![Back of the base plate](../media/assembly/base-plate-back.jpg)
 
@@ -218,7 +218,7 @@ The wrist camera is mounted above the base plate, with its lens facing the worki
 3. Position the cover against its mating surfaces, checking that it does not press on camera components or cables, then secure it. Choose screw lengths that hold it securely without pressing against the circuit board.
 4. Connect the USB cable and route it along the fixed structure, leaving slack for hand movement. The cable must not pass between the gripper fingers, near the pinion, or through the carriages' travel paths.
 
-The photo below shows the mount's orientation; the camera board fits at the upper opening. The curved part below is the extension bracket for the optional tracking assembly, installed in Section 7.
+The photo below shows the mount's orientation; the camera board fits at the upper opening. The curved part below is the extension bracket for the optional tracking assembly, installed in Section 6.
 
 ![Camera mount orientation and mounting points](../media/assembly/camera-mount-and-arc.jpg)
 
@@ -226,48 +226,9 @@ The photo below shows the mount's orientation; the camera board fits at the uppe
 
 Connect the camera to a computer and open its feed in a program that can preview USB cameras. Point the gripper at the actual working area and check that both gripper fingers and the target object appear in the frame. Slowly open and close the gripper and rotate your wrist, checking that the video remains continuous and the cable does not pull on the mount.
 
-Roughly adjust the lens until the fingers and working area are clear; perform final focusing after applying the finger markers in Section 6.
+Roughly adjust the lens until the fingers and working area are clear; perform final focusing after applying the finger markers in Section 7.
 
-## 6. Gripper Aperture Markers
-
-The wrist camera uses the black-and-white markers on the gripper fingers to estimate the distance between them. These markers are needed for wrist-camera policies as well as for setups with marker-ball tracking. Apply one marker to the top of each finger where the wrist camera can see both throughout opening and closing.
-
-### Measure Before Cutting Each Marker Group
-
-Print the [glove marker sheet](../pos-tracking/glove_markers_v4.pdf) at **100% / Actual size** on **matte paper or label stock**, with "Fit to page" and all automatic scaling disabled. Do not use glossy paper. The finger markers are in the **tips WRIST** group in the left column: AprilTag 16h5, IDs 2 (A) and 3 (B), with nominal 6 mm black squares and 8 mm tiles including the white border.
-
-Printer output can vary even between prints of the same sheet; variation of ±5% has been observed on the same printer. The solver uses the printed marker size to recover distance, so a 3% size error produces a 3% range error. Nominal dimensions and the print-dialog setting are not a substitute for measurement.
-
-Before cutting any markers:
-
-1. Check the printed 100 mm scale bar with calipers.
-2. For **each group you will use**, measure the **black square**, not the white outline. Take six measurements across different markers in that group, alternating width and height, and average them. Measure the finger, ball, and optional tail/base groups separately.
-3. Record the average for each group with the physical unit's calibration. For the forward-camera pipeline, enter these values in `calib/marker_map_glove_<unit>.json` in the companion repository and use the measured ball size in the ball calibration. See [forward-cam-umi measurements](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/README.md#1-measurements--one-caliper-reading-per-printed-group).
-
-### Prepare the Adhesive and Cut the Markers
-
-These rules apply to both the finger markers and the optional ball markers:
-
-1. Cover the entire back of the **uncut** marker region with thin double-sided tape.
-2. Cut through the paper and tape together along the outer tile boundary, preserving the white border. Every edge must be bonded with no loose paper margin.
-3. Leave the printed face uncovered. **Do not use glue or put tape over the marker face.** Glue can curl the edges as it dries; glossy surfaces, reflections, and refraction interfere with locating the corners used by the solver.
-
-### Position and Apply the Finger Markers
-
-1. Clean the flat surface on top of each gripper finger, facing the wrist camera. Position the marker **30 mm from the root of the finger**, as in the reference build, with the entire tile lying flat. Do not cross an edge or cover the rubber gripping surface that contacts objects.
-2. Press each prepared marker flat into place, with its entire back bonded to the finger.
-3. Apply one distinct ID per finger and record which ID is on which finger for the unit's calibration.
-4. In the wrist-camera preview, slowly move the fingers from closed to open. Both markers must remain fully visible, with clear edges and black-and-white cells, unobstructed by the gripper bodies or cables. Check detection with [`tag_contrast.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/tag_contrast.py).
-
-If a marker is difficult to see near the edge of the fisheye image, adjust its position within the finger's flat area **before calibration**, favoring a location away from the heavily distorted image edge; do not fold the paper around the side of the finger. Moving or replacing a marker after calibration requires recalibrating the affected geometry and aperture measurements.
-
-### Set the Final Focus
-
-At the working distance of the gripper fingers and the object, slowly rotate the lens barrel until the marker edges are sharp. Check once with the gripper open and once with it closed, then secure the lens locking ring.
-
-**Finish focusing before calibrating the camera.** Calibration establishes the relationship between image coordinates and physical geometry; turning the lens again changes the imaging parameters, so a focal-length adjustment requires recalibration.
-
-## 7. Marker-Ball Tracking Assembly (Optional)
+## 6. Marker-Ball Tracking Assembly (Optional)
 
 A fixed external camera reads the printed patterns on the marker ball to estimate the gripper's position and orientation. The software is in the companion [forward-cam-umi repository](https://github.com/YosubShin/forward-cam-umi). If this is your pose source, install the extension bracket, rod mount, rod, and marker ball described below.
 
@@ -303,26 +264,50 @@ Print files are in the [marker-ball assembly directory](../pos-tracking/wrist_do
 
 ![Mechanical assembly with the rod and marker ball installed](../media/assembly/tracker-assembled.jpg)
 
-### Apply the Ball Markers
+## 7. Markers and Camera Calibration
 
-1. From the **dodecahedron ball** group in the left column of the [glove marker sheet](../pos-tracking/glove_markers_v4.pdf), select the eleven ArUco markers with IDs 25–35 (`DICT_4X4_100`). Their nominal black-square size is 15 mm, and the tile including the white border is 19.5 mm per side.
-2. Follow [Measure Before Cutting Each Marker Group](#measure-before-cutting-each-marker-group) and [Prepare the Adhesive and Cut the Markers](#prepare-the-adhesive-and-cut-the-markers). Record the ball group's measured black-square size separately from the finger group and use it for ball calibration.
-3. Apply one marker to each of eleven faces, with no duplicate IDs. Keep every marker flat on its own face with its entire back bonded; never bridge an edge between faces.
-4. No fixed ID-to-face order is required: calibration recovers the layout. **Do not move, re-stick, or swap a marker after calibration.** Any such change requires recalibrating the ball, and each ball's calibration stays with that physical unit.
+Use the [glove marker sheet](../pos-tracking/glove_markers_v4.pdf). Apply the measurement and adhesive rules to every marker group you use. The ball-marker and forward-camera subsections apply only when using marker-ball tracking; all builds with wrist-camera aperture measurement need the gripper-tip markers.
 
-The tails and base groups in the right column belong to the forward-camera extension, which uses additional markers as an occlusion backup for the ball and for external-camera aperture measurement. They are not required for the basic wrist-camera-and-ball assembly described here; follow the companion repository if you add those extensions.
+### Measure before you cut — every marker group
 
-### Mount and Calibrate the Forward Camera
+Printers rescale by a few percent and the error is not visible by eye; we have seen the **same printer vary by ±5 % between two prints of the same sheet**. The solver converts the marker's printed size into distance from the camera, so a 3 % size error is a 3 % range error in every pose. For each marker group you are about to cut (ball faces, gripper tips, and the tails/bases if you use them):
 
-Marker-ball tracking needs a fixed camera above the workspace; the reference setup uses an **Arducam B0587 4K**. Follow the [forward-cam-umi camera, recording, and calibration procedure, steps 2–6](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/README.md) for commands and configuration. The assembly-to-calibration sequence is:
+1. Print at 100 % / Actual size on **matte** paper or label stock. No glossy paper.
+2. **Before cutting**, caliper the **black square** of a marker — not the white outline, which is where you cut. Measure six times across different markers of the group, alternating width and height, and average.
+3. Write the number down per group. It goes into your unit's marker map (`calib/marker_map_glove_<unit>.json`, see [forward-cam-umi §1](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/README.md#1-measurements--one-caliper-reading-per-printed-group)) and into the ball calibration; a nominal value silently corrupts every pose.
 
-1. **Mount the camera rigidly.** It must not move between calibration and recording. Frame the full working area, leaving headroom above the workspace because the marker ball is the highest point on the gripper. Keep the ball in frame when the gripper is raised or rotated, and avoid prolonged occlusion by your hand or the cable.
-2. **Set focus at working distance.** Use the live meter in [`focus_tune.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/focus_tune.py) on a marker, then mark the lens barrel. Refocusing later requires recalibrating that camera.
-3. **Calibrate camera intrinsics.** Measure the ChArUco board's square and marker dimensions with calipers, just as for the marker groups, and supply those measurements to [`calibrate_uvc.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/calibrate_uvc.py). Calibrate each camera used for metric pose or aperture estimation, including the wrist camera, and keep its calibration with the unit.
-4. **Solve the ball geometry.** Record a slow rotation take that shows every ball face, run detection, and use [`bundle_dodeca.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/bundle_dodeca.py) followed by [`bundle_dodeca_ideal.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/bundle_dodeca_ideal.py), using the ball group's measured size. Store the resulting geometry with this physical ball.
-5. **Calibrate the gripper markers and aperture.** If using the forward-camera extension's back/base markers, solve their geometry relative to the ball with [`calibrate_gripper_bundle.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/calibrate_gripper_bundle.py). Follow the companion procedure's measured-width holds for aperture calibration; both wrist-camera tip markers must remain detectable throughout those holds. Keep the unit's marker map, geometry, and aperture calibration together.
+### Apply the ball markers
 
-On a real YAM arm, this tracking stack measured **7.7 mm median position error and 1.7° median rotation error** against the arm's forward kinematics. See [dynamic tracking accuracy](../pos-tracking/dynamic-accuracy.md).
+From the dodecahedron group in the left column of the glove marker sheet, select the eleven ArUco markers with IDs 25–35 (`DICT_4X4_100`; nominal 15 mm black square, 19.5 mm tile including the white border). Apply one marker per face to eleven faces, no duplicate IDs. The ID-to-face layout is free — it is recovered by the ball calibration — so **do not move or swap a marker after calibrating**: a re-stuck marker means a re-calibrated ball, and each ball's calibration stays with that physical unit.
+
+Adhesive matters more than it looks, because the solver measures the marker's **corners**:
+
+- **No glue.** Glue curls the paper's edges as it dries, exactly where the corners are.
+- **No tape over the marker face** and no glossy surface: reflections and refraction move the corners.
+- Use **thin double-sided tape** covering the **entire** back of the marker: tape the uncut sheet region first, then cut the marker out through paper and tape together, so every edge is bonded with no loose margin. Keep each marker flat on its own face; never bridge an edge between two faces.
+
+### Apply the gripper-tip markers
+
+Two **6 mm AprilTag 16h5 markers, IDs 2 and 3**, go on the **top of the gripper fingers**, one per jaw, where the wrist camera sees them; we placed them **30 mm from the root of the finger**. They give the wrist camera a metric reading of the jaw opening, so they are needed for wrist-camera policies too, not only for ball tracking. Same rules as above: caliper before cutting (6 mm nominal), matte paper, full-back double-sided tape, no glue, nothing over the face. Both tips must stay visible to the wrist camera across the full opening; check with [`tag_contrast.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/tag_contrast.py) after installing.
+
+The tails and bases groups in the right column of the sheet belong to the forward-camera extension (occlusion backup for the ball) and are not needed otherwise.
+
+### The forward camera: mount, focus, calibrate, solve the ball
+
+Marker-ball tracking needs one fixed camera over the workspace (we use an Arducam B0587 4K). The full procedure with commands is [forward-cam-umi, steps 2–6](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/README.md); in short:
+
+1. **Mount it rigidly** so it cannot move between calibration and recording. Aim it at the full working area so the ball stays in frame when the gripper is raised or rotated, with headroom above the workspace (the ball is the highest point on the gripper), and avoid prolonged occlusion by your hand or the camera cable.
+2. **Focus** with the live meter ([`focus_tune.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/focus_tune.py)) on a marker at working distance, then mark the barrel; refocusing later means recalibrating.
+3. **Intrinsics** from a ChArUco board ([`calibrate_uvc.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/calibrate_uvc.py)), with the board's squares calipered like the markers.
+4. **Solve the ball** from one slow rotation take ([`bundle_dodeca.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/bundle_dodeca.py), [`bundle_dodeca_ideal.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/bundle_dodeca_ideal.py)), then the jaw-marker geometry ([`calibrate_gripper_bundle.py`](https://github.com/YosubShin/forward-cam-umi/blob/main/scripts/calibrate_gripper_bundle.py)). Store the results with the unit.
+
+Measured on the real robot, this stack tracks the gripper to 7.7 mm / 1.7° median against the arm's own kinematics — see [`pos-tracking/dynamic-accuracy.md`](../pos-tracking/dynamic-accuracy.md).
+
+### Set the Wrist Camera Focus
+
+After applying the gripper-tip markers, at the working distance of the gripper fingers and the object, slowly rotate the lens barrel until the marker edges are sharp. Check once with the gripper open and once with it closed, then secure the lens locking ring.
+
+**Finish focusing before calibrating the camera.** Calibration establishes the relationship between image coordinates and physical geometry; turning the lens again changes the imaging parameters, so a focal-length adjustment requires recalibration.
 
 ## 8. Final Checks
 
